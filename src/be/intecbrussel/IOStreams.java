@@ -4,11 +4,13 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.Scanner;
 
 public class IOStreams {
     public static void main(String[] args) {
-        writeToFile();
-//        readFromFile();
+//        writeToFile();
+        readFromFile();
     }
 
     private static void writeToFile() {
@@ -23,15 +25,26 @@ public class IOStreams {
 //            e.printStackTrace();
 //        }
 
-        try (BufferedWriter bufferedWriter = Files.newBufferedWriter(path)) {
+        try (BufferedWriter bufferedWriter = Files.newBufferedWriter(path, StandardOpenOption.APPEND)) {
+            Scanner scanner = new Scanner(System.in);
+            String sentence = scanner.nextLine();
 
-            bufferedWriter.write("Ik ben Jean-Luc");
+            bufferedWriter.write("\n" + sentence);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     private static void readFromFile() {
+        Path path = Paths.get("MyFolder/Secrets/Secret.txt");
+
+        try (BufferedReader bufferedReader = Files.newBufferedReader(path)) {
+
+            String sentence = bufferedReader.readLine();
+            System.out.println(sentence);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }
