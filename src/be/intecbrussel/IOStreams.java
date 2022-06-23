@@ -40,8 +40,25 @@ public class IOStreams {
 
         try (BufferedReader bufferedReader = Files.newBufferedReader(path)) {
 
-            String sentence = bufferedReader.readLine();
+            String sentence;
+
+            while ((sentence = bufferedReader.readLine())!=null){
+                System.out.println(sentence);
+            }
+
+            String line = bufferedReader.readLine();
+            while (line != null){
+                System.out.println(sentence);
+                line = bufferedReader.readLine();
+            }
+
+            for (String sentencee = bufferedReader.readLine();sentencee!=null; sentencee = bufferedReader.readLine()){
+                System.out.println(sentencee);
+            }
+
             System.out.println(sentence);
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
