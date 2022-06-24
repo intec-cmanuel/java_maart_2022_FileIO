@@ -17,13 +17,13 @@ public class IOStreams {
         Path path = Paths.get("MyFolder/Secrets/Secret.txt");
 
 
-//        try (Writer writer = new FileWriter(path.toFile());
-//             BufferedWriter bufferedWriter = new BufferedWriter(writer);) {
-//
-//            bufferedWriter.write("Ik ben Jean-Nuit");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        try (Writer writer = new FileWriter(path.toFile());
+             BufferedWriter bufferedWriter = new BufferedWriter(writer);) {
+
+            bufferedWriter.write("Ik ben Jean-Nuit");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         try (BufferedWriter bufferedWriter = Files.newBufferedWriter(path, StandardOpenOption.APPEND)) {
             Scanner scanner = new Scanner(System.in);
@@ -46,17 +46,17 @@ public class IOStreams {
                 System.out.println(sentence);
             }
 
-            String line = bufferedReader.readLine();
-            while (line != null){
-                System.out.println(sentence);
-                line = bufferedReader.readLine();
-            }
+//            String line = bufferedReader.readLine();
+//            while (line != null){
+//                System.out.println(sentence);
+//                line = bufferedReader.readLine();
+//            }
+//
+//            for (String sentencee = bufferedReader.readLine();sentencee!=null; sentencee = bufferedReader.readLine()){
+//                System.out.println(sentencee);
+//            }
 
-            for (String sentencee = bufferedReader.readLine();sentencee!=null; sentencee = bufferedReader.readLine()){
-                System.out.println(sentencee);
-            }
 
-            System.out.println(sentence);
 
 
         } catch (IOException e) {
